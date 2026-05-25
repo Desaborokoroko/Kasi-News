@@ -5,15 +5,22 @@ from .models import Post, Category
 # Create your views here.
 def home(request):
     categories = Category.objects.all()
-    latest_post = Post.objects.order_by("-created_at").first()
-    other_posts = Post.objects.order_by("-created_at")[1:]
+    top_story = Post.objects.order_by('-created_at').first()
     
-    return render(request, 'blog/home.html',{"categories":categories,"latest_post":latest_post,"other_posts":other_posts})
+    
+    if top_story:
+        latest_news = Post.objects.exclude(id=top_story.id).order_by('-created_at')[:10]
+    else:
+        latest_news = Post.objects.order_by('-created_at')[:10]
+        
+    context = {"categories":categories,"top_story":top_story,"latest_news":latest_news,}
+    
+    return render(request, 'blog/home.html',context)
 
 
-def category_posts(request,category_id):
+def category_posts(request,category_slug):
     categories = Category.objects.all()
-    category = get_object_or_404(Category,id=category_id)
+    category = get_object_or_404(Category,slug=category_slug)
     posts = Post.objects.filter(category=category).order_by('-created_at')
     
     return render(request,'blog/category.html',{'categories':categories,'category':category,'posts':posts})

@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+
         <meta charset="UTF-8">
         <title>KASI NEWS/ALEX</title>
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -10,17 +11,17 @@
 
     <body>
         <header class="site-header">
-            <div class="header-content">
+            <div class="container header-container">
                 <div class="logo-area">
-                    <img src="{%static 'images/logo.png'%}" alt="Kasi News Logo">
+                    <img src="{%static 'blog/images/logo.png'%}" alt="Kasi News Logo">
             <h1>
                 KASI NEWS
             </h1>
         </div>
-            <nav class = "main-nav">
+            <nav class ="main-nav">
                 <a href="{%url 'home' %}">Home</a>
                 {% for category in categories %}
-                <a href ="/category/{{category.id}}">{{category.name}}</a>
+                <a href ="{% url 'category_posts' category.slug %}">{{category.name}}</a>
                 {%endfor%}
             </nav>
         </div>

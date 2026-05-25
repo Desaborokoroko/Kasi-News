@@ -1,15 +1,46 @@
-{% extends "blog/base.html"%}
+{% extends "blog/base.html" %}
 {% block content %}
-<h2>{{category.name}}</h2>
-{% for post in posts %}
-<h3>
-    <a href="{%url 'post_detail' post.id%}">
-        {{post.title}}
-    </a>
-</h3>
-<p>{{post.content|truncatewords:25}}</p>
-<hr>
-{%empty%}
-<p>No posts in this category yet.</p>
-{%endfor%}
-{%endblock%}
+<section class="category-page-section">
+    <div class="category-header">
+        <h1 class="category-title">
+            {{category.name}}
+        </h1>
+        {% if category.description %}
+        <p class="category-description">
+            {{category.description}}
+        </p>
+        {% endif %}
+    </div>
+    <div class="category-news-grid">
+        {% for post in posts%}
+        <article class=category-news-card>
+            {% if post.image %}
+                <img src="{{ post.image.url}}" alt="{{post.title }}"
+                class="category-news-image">
+            {% endif %}
+            <div class="category-news-content">
+                <span class="category-news-meta">
+                    {{post.created_at|date:"M d,Y"}}
+                </span>
+                <h2 class="category-news-title">
+                    <a href="{% url 'post_detail' post.id %}">
+                        {{post.title}}
+                    </a>
+                </h2>
+                <p class="category-news-content">
+                    {{ post.content|truncatewords:20}}
+                </p>
+                <a href="{% url 'post_detail' post.id %}" class="category-read-more-btn">
+                    Read More
+                </a>
+            </div>
+        </article>
+        {% empty %}
+        <div class="no-posts-message">
+            <p> No Posts Available In This Category Yet.</p>
+        </div>
+        {%endfor%}
+
+    </div>
+</section>
+{% endblock%}
