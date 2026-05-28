@@ -4,7 +4,7 @@
     {% if top_story %}
     <div class="top-story-card" style="background-image:url('{{top_story.image.url }}');">
         <div class="top-story-content">
-            <h2>{{ top_story.title}}</h2>
+            <h2>Kasi news Deployment Test </h2>
             <p>{{top_story.content|truncatewords:25}}</p>
         </div>
         <a href="{% url 'post_detail' top_story.id %}">Read More</a>
