@@ -1,8 +1,9 @@
 {% extends 'blog/base.html' %}
 {% block content %}
 <section class="hero-section">
-    {% if top_story.image %}
-    <div class="top-story-card" style="background-image:url('{{top_story.image.url }}');">
+    
+    <div class="top-story-card" {% if top_story.image %} 
+    style="background-image:url('{{top_story.image.url }}');" {% endif %}>
         <div class="top-story-content">
             <h2>{{top_story.title}}</h2>
             <p>{{top_story.content|truncatewords:25}}</p>
@@ -10,7 +11,7 @@
         <a href="{% url 'post_detail' top_story.id %}">Read More</a>
     </div>
 
-    {% endif%}
+
 </section>
 <section class="latest-news-section">
     <div class="section-header">
