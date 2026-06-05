@@ -30,7 +30,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-local-dev-only-change-me')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG' 'True') == 'True'
+DEBUG = True #os.getenv('DEBUG' 'True') == 'True'
 
 
 

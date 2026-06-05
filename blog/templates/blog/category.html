@@ -29,7 +29,6 @@
                 </h2>
                 <p class="category-news-content">
                     {{ post.content|truncatewords:20}}
-                    {{ post.author.username}}
                 </p>
                 <a href="{% url 'post_detail' post.id %}" class="category-read-more-btn">
                     Read More

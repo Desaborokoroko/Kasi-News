@@ -7,10 +7,11 @@
         <div class="top-story-content">
             <h2>{{top_story.title}}</h2>
             <p>{{top_story.content|truncatewords:25}}
-                {{top_story.author.username}}
             </p>
         </div>
+        {% if top_story %}
         <a href="{% url 'post_detail' top_story.id %}">Read More</a>
+        {% endif %}
     </div>
 
 
