@@ -6,7 +6,9 @@
     style="background-image:url('{{top_story.image.url }}');" {% endif %}>
         <div class="top-story-content">
             <h2>{{top_story.title}}</h2>
-            <p>{{top_story.content|truncatewords:25}}</p>
+            <p>{{top_story.content|truncatewords:25}}
+                {{top_story.author.username}}
+            </p>
         </div>
         <a href="{% url 'post_detail' top_story.id %}">Read More</a>
     </div>
