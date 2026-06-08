@@ -15,7 +15,7 @@ class BlogConfig(AppConfig):
                 email = os.getenv('DJANGO_SUPERUSER_EMAIL','kasinews@gmail.com')
                 password = os.getenv('DJANGO_SUPERUSER_PASSWORD')
     
-                if password not User.objects.filter(username=username).exists() and password:
+                if password and not User.objects.filter(username=username).exists() and password:
                     User.objects.create_superuser(username,email,password)
                     print('Superuser created')
             except (OperationalError,ProgrammingError):
