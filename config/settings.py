@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+from django.contrib.auth import get_user_model
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -126,3 +127,13 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+if os.getenv('CREATE_SUPERUSER') == 'True':
+    User = get_user_model()
+    username = os.getenv('DJANGO_SUPERUSER_USERNAME','admin')
+    email = os.getenv('DJANGO_SUPERUSER_EMAIL','kasinews@gmail.com')
+    password = os.getenv('DJANGO_SUPERUSER_PASSWORD')
+    
+    if not User.objects.filter(username=username).exists() and password:
+        User.objects.create_superuser(username,email,password)
+        print('Superuser created')
