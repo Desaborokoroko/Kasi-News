@@ -15,9 +15,11 @@ class BlogConfig(AppConfig):
                 email = os.getenv('DJANGO_SUPERUSER_EMAIL','kasinews@gmail.com')
                 password = os.getenv('DJANGO_SUPERUSER_PASSWORD')
     
-                if password and not User.objects.filter(username=username).exists() and password:
-                    User.objects.create_superuser(username,email,password)
-                    print('Superuser created')
-            except (OperationalError,ProgrammingError):
-                pass
+                if password:
+                    user, created = User.objects.get_or_create(username=username, 
+                    defaults={'email':email,'is_staff':True,
+                            'is_superuser':True})
+                    user.set_password(password)
+                    user.save()
+                    print("superuser password updated")
             
