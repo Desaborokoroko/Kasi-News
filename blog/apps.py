@@ -22,4 +22,6 @@ class BlogConfig(AppConfig):
                     user.set_password(password)
                     user.save()
                     print("superuser password updated")
+            except(OperationalError,ProgrammingError):
+                pass
             
