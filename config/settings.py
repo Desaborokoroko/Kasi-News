@@ -128,7 +128,7 @@ USE_TZ = True
 print("BASE_DIR =",BASE_DIR)
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATICFILES_FINDERS = ['django.contrib.staticfiles.finders.FileSystemFinder',
                         'django.contrib.staticfiles.finders.AppDirectoriesFinder',]
