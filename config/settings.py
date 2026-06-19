@@ -45,10 +45,11 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
     'blog.apps.BlogConfig',
+    'cloudinary_storage',
+    
 ]
 
 MIDDLEWARE = [
@@ -124,15 +125,18 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
-
+print("BASE_DIR =",BASE_DIR)
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
+STATICFILES_FINDERS = ['django.contrib.staticfiles.finders.FileSystemFinder',
+                        'django.contrib.staticfiles.finders.AppDirectoriesFinder',]
 
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME':os.getenv('CLOUDINARY_CLOUD_NAME'),
     'API_KEY':os.getenv('CLOUDINARY_API_KEY'),
     'API_SECRET':os.getenv('CLOUDINARY_API_SECRET'),
     }
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+#DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
