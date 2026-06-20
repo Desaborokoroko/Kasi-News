@@ -139,17 +139,12 @@ CLOUDINARY_STORAGE = {
     'API_KEY':os.getenv('CLOUDINARY_API_KEY'),
     'API_SECRET':os.getenv('CLOUDINARY_API_SECRET'),
     }
-STORAGES = { 
-            "default": {
-                "BACKEND":
-                    "cloudinary_storage.storage.MediaCloudinaryStorage",
-            },
-            "staticfiles": {
-                "BACKEND":
-                    "whitenoise.storage.CompressedStaticFilesStorage",
-            }
-    
-}
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+
 
 #upload media
 MEDIA_URL = '/media/'
