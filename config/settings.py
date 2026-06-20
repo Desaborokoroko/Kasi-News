@@ -13,10 +13,14 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
-
+from dotenv import dotenv_values
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+env = dotenv_values(BASE_DIR /".env")
+
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -135,14 +139,21 @@ import cloudinary.uploader
 import cloudinary.api
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME':os.getenv('CLOUDINARY_CLOUD_NAME'),
-    'API_KEY':os.getenv('CLOUDINARY_API_KEY'),
-    'API_SECRET':os.getenv('CLOUDINARY_API_SECRET'),
+    'CLOUD_NAME' : env.get('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY' : env.get('CLOUDINARY_API_KEY'),
+    'API_SECRET' : env.get('CLOUDINARY_API_SECRET'),
     }
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+STORAGES = {
+    "default": {
+        "BACKEND":
+            "cloudinary_storage.storage.MediaCloudinaryStorage",
+    },
+    "staticfiles": {
+        "BACKEND":
+            "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 
 
