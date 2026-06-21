@@ -3,12 +3,10 @@ from django.shortcuts import render,get_object_or_404
 from .models import Post, Category
 from  django.http import HttpResponse
 
-def home(request):
-    return HttpResponse("Homepage works")
 
 
 # Create your views here.
-#def home(request):
+def home(request):
     categories = Category.objects.all()
     top_story = Post.objects.order_by('-created_at').first()
     
@@ -26,7 +24,7 @@ def home(request):
     return render(request, 'blog/home.html',context)
 
 
-#def category_posts(request,category_slug):
+def category_posts(request,category_slug):
     categories = Category.objects.all()
     category = get_object_or_404(Category,slug=category_slug)
     posts = Post.objects.filter(category=category).order_by('-created_at')
@@ -34,7 +32,7 @@ def home(request):
     return render(request,'blog/category.html',{'categories':categories,'category':category,'posts':posts})
 
 
-#def post_detail(request,post_id):
+def post_detail(request,post_id):
     categories = Category.objects.all()
     post = get_object_or_404(Post,id=post_id)
     
