@@ -14,6 +14,9 @@ def home(request):
         latest_news = Post.objects.order_by('-created_at')[:10]
         
     context = {"categories":categories,"top_story":top_story,"latest_news":latest_news,}
+    print("TOP STORY:",top_story)
+    print("TOP STORY IMAGE:",top_story.image)
+    print("TOP STORY URL:",top_story.image.url)
     
     return render(request, 'blog/home.html',context)
 
