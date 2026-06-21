@@ -19,7 +19,7 @@ from dotenv import dotenv_values
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 env = dotenv_values(BASE_DIR /".env")
-print("CLOUD_NAME =",CLOUDINARY_STORAGE.get("CLOUD_NAME"))
+print("CLOUD_NAME =" , CLOUDINARY_STORAGE.get("CLOUD_NAME"))
 
 
 
