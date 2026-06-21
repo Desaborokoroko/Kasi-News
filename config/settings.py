@@ -139,9 +139,12 @@ import cloudinary.uploader
 import cloudinary.api
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME' : env.get('CLOUDINARY_CLOUD_NAME'),
-    'API_KEY' : env.get('CLOUDINARY_API_KEY'),
-    'API_SECRET' : env.get('CLOUDINARY_API_SECRET'),
+    'CLOUD_NAME' : os.getenv("CLOUDINARY_CLOUD_NAME") or 
+    env.get('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY' : os.getenv("CLOUDINARY_API_KEY") or
+    env.get('CLOUDINARY_API_KEY'),
+    'API_SECRET' : os.getenv("CLOUDINARY_API_SECRET") or
+    env.get('CLOUDINARY_API_SECRET'),
     }
 
 STORAGES = {
