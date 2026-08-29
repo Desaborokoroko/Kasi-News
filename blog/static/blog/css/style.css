@@ -16,7 +16,7 @@ border-radius:5px;transition:all 0.3s ease;}
 .main-nav a.active {background-color:#fff;color:#333;}
 /*Hero-section*/
 .hero-section {width: 100%;max-width:1200px;height:75vh;padding:40px 20px;background: whitesmoke;display:flex;
-    justify-content:center;align-items: center;margin:0 auto;}
+    justify-content:center;align-items: flex-end;margin:0 auto;}
 /* Top Story card*/
 .top-story-card {position: relative;width:100%;aspect-ratio:16/9;min-height:400px;
 flex-shrink: 0;border-radius:35px;background-size: cover;background-position: center;
