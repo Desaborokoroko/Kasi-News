@@ -54,7 +54,7 @@ gap:30px;}
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);transition: transform 0.3s ease,box-shadow 0.3s ease;;}
 .news-card:hover {transform:translateY(-8px);box-shadow: 0 8px 20px rgba(0,0,0,0.15);}
 /*Post Image*/
-.news-image {width:100%;height:220px;object-fit:cover;display:block;}
+.news-image {width:100%;height:220px;object-fit:cover;display:block;object-position:center 25%;}
 .news-content {padding:20px;}
 /*Category*/
 .news-category {display:inline-block;background:green;color:white;font-size:0.8rem;
