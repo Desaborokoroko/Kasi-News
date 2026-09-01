@@ -86,7 +86,7 @@ box-shadow: 0 5px 18px rgba(0,0,0,0.8);transition: transform 0.3s ease,box-shado
 .category-news-image-link {display:block;overflow: hidden;}
 /*image*/
 .category-news-image {width: 100%;height: 230px;object-fit:cover;
-    object-position: center 75% !important;transition: transform 0.4s ease;display:block;}
+    object-position: center 35% !important;transition: transform 0.4s ease;display:block;}
 .category-news-card:hover .category-news-image {transform: scale(1.05);}
 /*Content*/
 .category-news-content {padding:22px;}
